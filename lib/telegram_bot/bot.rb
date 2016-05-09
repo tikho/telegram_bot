@@ -25,6 +25,7 @@ module TelegramBot
     alias_method :identity, :me
 
     def get_updates(opts = {}, &block)
+      opts = opts.compact #removing nill messages
       return get_last_messages(opts) unless block_given?
 
       logger.info "starting get_updates loop"
